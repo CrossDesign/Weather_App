@@ -7,11 +7,6 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #fcf7d4;
-            margin: 0;
-            padding: 20px;
-            background-image: url('{{ url_for('static', filename='background.jpg') }}');
-            background-size: cover;
-            background-repeat: no-repeat;
         }
         nav a {
             margin-right: 15px;
@@ -81,11 +76,16 @@
                     <li>'station'</li>
                     <li>'date'</li>
                     <li>'temperature'</li>
-                    <li>'condition'</li>
                 <h3>Content</h3>
-                <p id="current-temp">Temperature: --</p>
-                <p id="current-condition">Condition: --</p>
+                <p id="resuested-date">Date: --</p>
+                <p id="resuested-station">Station: --</p>
+                <p id="date-temp">Temperature: --</p>
             </div>
+        </div>
+        <div id="stations-table">
+            <h2>Stations Table</h2>
+            <table>{{stations_table|safe}}</table>
+        </div>
     </div>
 </body>
 </html>

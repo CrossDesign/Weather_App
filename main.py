@@ -1,12 +1,16 @@
 from flask import Flask, render_template
 import pandas as pd
 
+
+stations_table = pd.read_csv('data/data_small/stations.txt', skiprows=17)
+stations_table = stations_table[['STAID','STANAME                                 ']]
+
 def create_app():
     app = Flask(__name__)
 
     @app.route('/')
     def home():
-        return render_template('home.html')
+        return render_template('home.html', stations_table=stations_table.to_html())
     
     @app.route('/api/v1/<station>/<date>')
     def about(station, date):
@@ -25,4 +29,4 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(debug=True)
+    app.run(port=5000,debug=True)
