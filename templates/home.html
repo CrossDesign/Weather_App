@@ -58,28 +58,21 @@
     </style>
     <div class="content">
         <h1>Weather Data API</h1>
-        <div id="hourly-forecast">
+        <div id="api-template">
             <h2>API Template</h2>
-            <div class="api_template">
-                <h3>URL format</h3>
+            <div class="url-template">
+                <h3>URL Format and Example</h3>
+                <h4>All station data:</h4>
+                <p>http://127.0.0.1:5000/api/v1/station_placeholder</p>
+                <p>http://127.0.0.1:5000/api/v1/10</p>
+                <h4>Yearly station data:</h4>
+                <p>http://127.0.0.1:5000/api/yearly/v1/station_placeholder/date_placeholder</p>
+                <p>http://127.0.0.1:5000/api/v1/yearly/10/1988</p>
+                <h4>Day specific station data:</h4>
                 <p>http://127.0.0.1:5000/api/v1/station_placeholder/date_placeholder</p>
-                <h3>URL Example</h3>
                 <p>http://127.0.0.1:5000/api/v1/10/19881025</p>
                 <p>or</p>
                 <p>http://127.0.0.1:5000/api/v1/10/1988-10-25</p>
-            </div>
-        <div id="examle-api-call">
-            <h2>Example Output</h2>
-            <div>
-                <h3>List of Keys</h3>
-                <ul>
-                    <li>'station'</li>
-                    <li>'date'</li>
-                    <li>'temperature'</li>
-                <h3>Content</h3>
-                <p id="resuested-date">Date: --</p>
-                <p id="resuested-station">Station: --</p>
-                <p id="date-temp">Temperature: --</p>
             </div>
         </div>
         <div id="stations-table">

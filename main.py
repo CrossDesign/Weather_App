@@ -11,10 +11,27 @@ def create_app():
     @app.route('/')
     def home():
         return render_template('home.html', stations_table=stations_table.to_html())
+
+    @app.route('/api/v1/<station>')
+    def all_data(station):
+        default_path = "data/data_small/TG_STAID"
+        station_path = default_path + str(station).zfill(6) + '.txt'
+        df = pd.read_csv(station_path,skiprows=20,parse_dates=['    DATE'])
+        result = df.to_dict(orient='records')
+        return result
+
+    @app.route('/api/v1/yearly/<station>/<year>')
+    def year_data(station,year):
+        default_path = "data/data_small/TG_STAID"
+        station_path = default_path + str(station).zfill(6) + '.txt'
+        df = pd.read_csv(station_path,skiprows=20)
+        df['    DATE'] = df['    DATE'].astype(str)
+        df = df[df['    DATE'].str.startswith(str(year))]
+        result = df.to_dict(orient='records')
+        return result
     
     @app.route('/api/v1/<station>/<date>')
     def about(station, date):
-        # Use the station and date to read the data
         default_path = "data/data_small/TG_STAID"
         station_path = default_path + str(station).zfill(6) + '.txt'
         df = pd.read_csv(station_path,skiprows=20,parse_dates=['    DATE'])
